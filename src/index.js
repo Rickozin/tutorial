@@ -51,7 +51,11 @@ class Tutorial extends Client {
 const dbIndex = require('./database/index.js')
 dbIndex.start();
 
-const client = new Tutorial();
+const client = new Tutorial({
+    intents: 32767,
+    allowedMentions: { parse: ["users"], repliedUser: true },
+    fetchAllMembers: true
+});
 
 const onLoad = async () => {
     klaw('src/commands').on('data', (item) => {

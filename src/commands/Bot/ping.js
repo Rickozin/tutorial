@@ -7,13 +7,13 @@ module.exports = class ping extends Command {
 
         this.name = "ping"
         this.category = "Bot"
-        this.description = "Vê o ping do bot"
+        this.description = "Exibe o ping do bot"
         this.usage = "ping"
         this.aliases = []
 
         this.enabled = true;
     }
     async run(message, args, prefix, author, channel) {
-        channel.send(`Minha latência é: **${this.client.ws.ping}ms**`)
+        message.reply(`Minha latência é: **${this.client.ws.ping}ms**`)
     }
 }
