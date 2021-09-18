@@ -15,6 +15,7 @@ module.exports = class prefix extends Command {
         this.reference = 'ban'
     }
     async run(message, args, prefix, author, channel) {
+        if(!message.member.permissions.has("BAN_MEMBERS")) return message.reply(`Você precisa da permissão **BAN_MEMBERS** para executar esse comando.`)
         if(!args[0]) return message.reply(`Você precisa inserir um usuário para banir ou um sub-comando para configurar o sistema. \n Caso deseje ver os sub-comandos utilize **${prefix}ban help**`)
         let subcmd = this.client.commands.subcommands.get(this.reference).find((x) => x.name.toLowerCase() == args[0].toLowerCase() || x.aliases.includes(args[0].toLowerCase()))
         if(!subcmd) {
